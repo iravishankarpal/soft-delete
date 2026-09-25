@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 permissions:
   contents: write          # create tags & releases
@@ -19,7 +19,7 @@ jobs:
     name: Semantic Release
     runs-on: ubuntu-latest
     # Only run on main and after CI would pass (you can also make it need the CI job)
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - name: Checkout

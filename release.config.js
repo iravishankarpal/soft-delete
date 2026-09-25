@@ -1,27 +1,28 @@
-{
-  "branches": ["main"],
-  "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
+/** @type {import('semantic-release').Options} */
+export default {
+  branches: ['master'],
+  plugins: [
+    '@semantic-release/commit-analyzer',
+    '@semantic-release/release-notes-generator',
     [
-      "@semantic-release/changelog",
+      '@semantic-release/changelog',
       {
-        "changelogFile": "CHANGELOG.md"
-      }
+        changelogFile: 'CHANGELOG.md',
+      },
     ],
-    "@semantic-release/npm",
+    '@semantic-release/npm',
     [
-      "@semantic-release/github",
+      '@semantic-release/github',
       {
-        "assets": []
-      }
+        assets: [],
+      },
     ],
     [
-      "@semantic-release/git",
+      '@semantic-release/git',
       {
-        "assets": ["package.json", "pnpm-lock.yaml", "CHANGELOG.md"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-      }
-    ]
-  ]
+        assets: ['package.json', 'pnpm-lock.yaml', 'CHANGELOG.md'],
+        message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+      },
+    ],
+  ],
 }
