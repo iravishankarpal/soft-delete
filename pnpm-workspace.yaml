@@ -1,3 +1,14 @@
+# pnpm 10.6+ also reads *settings* from this file, but pnpm 9 (and pnpm < 10.6)
+# treats it as a pure workspace manifest and requires a non-empty `packages`
+# field. When it is missing, EVERY pnpm command in this directory fails with:
+#   ERROR  packages field missing or empty
+# ...including the `pnpm store path` call that actions/setup-node's `cache: pnpm`
+# step makes, which is what broke CI before the install step even ran.
+# This is a single-package repo, so the only workspace project is the root.
+packages:
+  - '.'
+
+# pnpm v11 build-script approvals (v11's replacement for onlyBuiltDependencies).
 allowBuilds:
   '@swc/core': false
   esbuild: true
