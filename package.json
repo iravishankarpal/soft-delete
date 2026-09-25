@@ -1,6 +1,10 @@
 {
   "name": "@payload-pln/soft-delete",
   "version": "1.0.5",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iravishankarpal/soft-delete.git"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -98,6 +102,7 @@
     "pnpm": "^9 || ^10 || ^11"
   },
   "publishConfig": {
+    "access": "public",
     "exports": {
       ".": {
         "import": "./dist/index.js",
@@ -118,7 +123,6 @@
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts"
   },
-  "registry": "https://registry.npmjs.org/",
   "dependencies": {
     "tsup": "^8.5.1"
   }
