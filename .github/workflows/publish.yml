@@ -32,4 +32,10 @@ jobs:
       - name: Publish to npm
         run: pnpm publish --no-git-checks --access public
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # IMPORTANT: actions/setup-node (registry-url) writes
+          # `//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}` into ~/.npmrc,
+          # so npm/pnpm only authenticate when the token is exposed as
+          # NODE_AUTH_TOKEN. NPM_TOKEN is read by semantic-release's npm plugin,
+          # not by `pnpm publish` — using it here sends an anonymous request,
+          # which the registry answers with `404 {"error":"Not found"}`.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
