@@ -3,7 +3,7 @@ name: Publish to npm with pnpm
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   publish:
